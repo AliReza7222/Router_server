@@ -30,6 +30,8 @@ class Vertex:
 
     def get_adjacent_vertice(self):
         return self.__adjacent_vertice
+    def append_adjacent_vertice(self,neighbor):
+        self.__adjacent_vertice.append(neighbor)
 
     def get_prev(self):
         return self.__prev
