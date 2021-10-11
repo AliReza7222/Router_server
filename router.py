@@ -26,31 +26,20 @@ class Router:
         for vertex in list_v:
             self.__vertices.append(Vertex(int(vertex[0]),float(vertex[1]),float(vertex[2])))
 
-        head,trail=0,0
-        for edge in list_e:
-            v_head,v_trail=edge[0],edge[1]
-            for vertex in list_v:
-                if v_head in vertex:
-                    head=Vertex(int(v_head),float(vertex[1]),float(vertex[2]))
-                if v_trail in vertex:
-                    trail=Vertex(int(v_trail),float(vertex[1]),float(vertex[2]))
 
-            self.__edges[int(v_head),int(v_trail)] = Edge(head,trail)
-            self.__edges[int(v_trail),int(v_head)]=  Edge(trail,head)
-
-    def find_shortest_path(self,start_id,end_id):
-        copy_v=deepcopy(self.__vertices)
-        copy_e=deepcopy(self.__edges)
-        heap=MinHeap(copy_v)
-        heap.modify(start_id,0)
-        while end_id in heap:
-             v=heap.pop()
-             for id,edge in zip(copy_e.keys(),copy_e.values()):
-                if v.get_id() is id[0]:
-                    size_n_v= v.get_value() + edge.get_weight()
-                    neighboor=edge.get_tail()
-                    size_neighboor=neighboor.get_value()
-                    print('size v + road = ',size_n_v,'\tvalue neighboor is :',size_neighboor)
+    # def find_shortest_path(self,start_id,end_id):
+    #     copy_v=deepcopy(self.__vertices)
+    #     copy_e=deepcopy(self.__edges)
+    #     heap=MinHeap(copy_v)
+    #     heap.modify(start_id,0)
+    #     while end_id in heap:
+    #          v=heap.pop()
+    #          for id,edge in zip(copy_e.keys(),copy_e.values()):
+    #             if v.get_id() is id[0]:
+    #                 size_n_v= v.get_value() + edge.get_weight()
+    #                 neighboor=edge.get_tail()
+    #                 size_neighboor=neighboor.get_value()
+    #                 print('size v + road = ',size_n_v,'\tvalue neighboor is :',size_neighboor)
 
 r=Router('maps.txt')
-print(r.find_shortest_path(60,72))
+#print(r.find_shortest_path(60,72))
