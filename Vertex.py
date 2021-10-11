@@ -28,6 +28,9 @@ class Vertex:
     def set_value(self,value):
         self.__value=value
 
+    def get_adjacent_vertice(self):
+        return self.__adjacent_vertice
+
     def get_prev(self):
         return self.__prev
     def set_prev(self,prev):
