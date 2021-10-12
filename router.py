@@ -13,34 +13,26 @@ class Router:
         self.__vertices=[]
         self.add_v_e()
     def add_v_e(self):
-        with open(self.map_file_address,'r') as v_e:
+        with open(self.map_file_address,'r') as map_file:
+            n,e=[int(i) for i in map_file.readline().split()]
 
-            number_v_e = v_e.readline(3)
+            vertices = {}
+            for _ in range(n):
+                line=map_file.readline().split()
+                ide,x,y=int(line[0]),float(line[1]),float(line[2])
+                new_vertex=Vertex(ide,x,y)
+                self.__vertices.append(new_vertex)
+                vertices[ide]=new_vertex
 
-            n_v,n_e= int(number_v_e[0]),int(number_v_e[2])
-
-            list_v=[v_e.readline().strip('\n').split(' ') for v in range(n_v+1)]
-            list_v.remove([''])
-            list_e=[v_e.readline().strip('\n').split(' ') for e in range(n_e)]
-
-        for vertex in list_v:
-            self.__vertices.append(Vertex(int(vertex[0]),float(vertex[1]),float(vertex[2])))
-
-        head, trail = None, None
-        for edge in list_e:
-            v_head, v_trail = edge[0], edge[1]
-            for vertex in list_v:
-                if v_head in vertex:
-                    head = Vertex(int(v_head), float(vertex[1]), float(vertex[2]))
-                if v_trail in vertex:
-                    trail = Vertex(int(v_trail), float(vertex[1]), float(vertex[2]))
-
-            self.__edges[int(v_head), int(v_trail)] = Edge(head, trail)
-            self.__edges[int(v_trail), int(v_head)] = Edge(trail, head)
-        for v in self.__vertices:
-            for e_k,e_v in zip(self.__edges.keys(),self.__edges.values()):
-                if v.get_id() is e_k[0]:
-                    v.append_adjacent_vertice(e_v.get_tail())
+            for _ in range(e):
+                line=map_file.readline().split()
+                id1,id2 = int(line[0]),int(line[1])
+                head,tail = vertices[id1],vertices[id2]
+                new_edge = Edge(head,tail)
+                self.__edges[id1,id2] = new_edge
+                self.__edges[id2,id1] = new_edge
+                head.append_adjacent_vertice(tail)
+                tail.append_adjacent_vertice(head)
 
     def find_shortest_path(self,start_id,end_id):
         copy_v=deepcopy(self.__vertices)
@@ -53,9 +45,9 @@ class Router:
                 edge=copy_e[v.get_id(),neighbor.get_id()]
                 size_v_n=v.get_value()+edge.get_weight()
                 print(size_v_n)
-                if size_v_n > neighbor.get_value():
+                if size_v_n < neighbor.get_value():
                     heap.modify(neighbor,size_v_n)
                     neighbor.set_prev(v)
                     print(neighbor.get_value())
 r=Router('maps.txt')
-print(r.find_shortest_path(60,66))
+print(r)

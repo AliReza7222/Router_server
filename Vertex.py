@@ -1,5 +1,5 @@
 class Vertex:
-    def __init__(self, identity , y , x , value=float('inf')):
+    def __init__(self, identity , x , y , value=float('inf')):
         self.__identity=identity
         self.__x=x
         self.__y=y
