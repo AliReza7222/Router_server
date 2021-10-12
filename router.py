@@ -52,8 +52,10 @@ class Router:
             for neighbor in v.get_adjacent_vertice():
                 edge=Edge(v,neighbor)
                 size_v_n=v.get_value()+edge.get_weight()
-                if size_v_n > neighbor.get_value():
-                    heap.modify(neighbor,size_v_n)
-                    neighbor.set_prev(v)
+                print(size_v_n,neighbor.get_value())
+                ## --> bog : value is inf
+                #if size_v_n > neighbor.get_value():
+                    #heap.modify(neighbor,size_v_n)
+                    #neighbor.set_prev(v)
 r=Router('maps.txt')
 print(r.find_shortest_path(72,60))
