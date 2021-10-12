@@ -42,13 +42,14 @@ class Router:
                 if v.get_id() is e_k[0]:
                     v.append_adjacent_vertice(e_v.get_tail())
 
-# def find_shortest_path(self,start_id,end_id):
-    #     copy_v=deepcopy(self.__vertices)
-    #     copy_e=deepcopy(self.__edges)
-    #     heap=MinHeap(copy_v)
-    #     heap.modify(start_id,0)
-    #     while end_id in heap:
-    #          v=heap.pop()
+    def find_shortest_path(self,start_id,end_id):
+        copy_v=deepcopy(self.__vertices)
+        copy_e=deepcopy(self.__edges)
+        heap=MinHeap(copy_v)
+        heap.modify(start_id,0)
+        while end_id in heap:
+             v=heap.pop()
+             print(v.get_value())
     #          for id,edge in zip(copy_e.keys(),copy_e.values()):
     #             if v.get_id() is id[0]:
     #                 size_n_v= v.get_value() + edge.get_weight()
@@ -57,4 +58,4 @@ class Router:
     #                 print('size v + road = ',size_n_v,'\tvalue neighboor is :',size_neighboor)
 
 r=Router('maps.txt')
-#print(r.find_shortest_path(60,72))
+print(r.find_shortest_path(72,60))
