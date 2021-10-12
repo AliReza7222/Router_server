@@ -15,5 +15,5 @@ class Edge:
     def get_weight(self):
         x1,x2=self.__head.get_x(),self.__tail.get_x()
         y1,y2=self.__head.get_y(),self.__tail.get_y()
-        weight_edge= ( (x2**2 - x1**2) + (y2**2 - y1**2) )**(1/2)
+        weight_edge= (( (x2**2 - x1**2)**(1/2)) + ((y2**2 - y1**2 )**(1/2)))
         return weight_edge
