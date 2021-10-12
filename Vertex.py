@@ -40,8 +40,7 @@ class Vertex:
 
 
     def __eq__(self, other):
-        if self.__identity == other.__identity:
-            return other==self
+            return other.__identity == self.__identity
 
     def __gt__(self, other):
         if not isinstance(other,Vertex):
