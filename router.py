@@ -48,14 +48,12 @@ class Router:
         heap=MinHeap(copy_v)
         heap.modify(start_id,0)
         while end_id in heap:
-             v=heap.pop()
-             print(v.get_value())
-    #          for id,edge in zip(copy_e.keys(),copy_e.values()):
-    #             if v.get_id() is id[0]:
-    #                 size_n_v= v.get_value() + edge.get_weight()
-    #                 neighboor=edge.get_tail()
-    #                 size_neighboor=neighboor.get_value()
-    #                 print('size v + road = ',size_n_v,'\tvalue neighboor is :',size_neighboor)
-
+            v=heap.pop()
+            for neighbor in v.get_adjacent_vertice():
+                edge=Edge(v,neighbor)
+                size_v_n=v.get_value()+edge.get_weight()
+                if size_v_n > neighbor.get_value():
+                    heap.modify(neighbor,size_v_n)
+                    neighbor.set_prev(v)
 r=Router('maps.txt')
 print(r.find_shortest_path(72,60))
