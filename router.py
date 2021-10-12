@@ -26,8 +26,23 @@ class Router:
         for vertex in list_v:
             self.__vertices.append(Vertex(int(vertex[0]),float(vertex[1]),float(vertex[2])))
 
+        head, trail = None, None
+        for edge in list_e:
+            v_head, v_trail = edge[0], edge[1]
+            for vertex in list_v:
+                if v_head in vertex:
+                    head = Vertex(int(v_head), float(vertex[1]), float(vertex[2]))
+                if v_trail in vertex:
+                    trail = Vertex(int(v_trail), float(vertex[1]), float(vertex[2]))
 
-    # def find_shortest_path(self,start_id,end_id):
+            self.__edges[int(v_head), int(v_trail)] = Edge(head, trail)
+            self.__edges[int(v_trail), int(v_head)] = Edge(trail, head)
+        for v in self.__vertices:
+            for e_k,e_v in zip(self.__edges.keys(),self.__edges.values()):
+                if v.get_id() is e_k[0]:
+                    v.append_adjacent_vertice(e_v.get_tail())
+
+# def find_shortest_path(self,start_id,end_id):
     #     copy_v=deepcopy(self.__vertices)
     #     copy_e=deepcopy(self.__edges)
     #     heap=MinHeap(copy_v)
