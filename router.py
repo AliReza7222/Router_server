@@ -50,12 +50,12 @@ class Router:
         while end_id in heap:
             v=heap.pop()
             for neighbor in v.get_adjacent_vertice():
-                edge=Edge(v,neighbor)
+                edge=copy_e[v.get_id(),neighbor.get_id()]
                 size_v_n=v.get_value()+edge.get_weight()
-                print(size_v_n,neighbor.get_value())
-                ## --> bog : value is inf
-                #if size_v_n > neighbor.get_value():
-                    #heap.modify(neighbor,size_v_n)
-                    #neighbor.set_prev(v)
+                print(size_v_n)
+                if size_v_n > neighbor.get_value():
+                    heap.modify(neighbor,size_v_n)
+                    neighbor.set_prev(v)
+                    print(neighbor.get_value())
 r=Router('maps.txt')
-print(r.find_shortest_path(72,60))
+print(r.find_shortest_path(60,66))

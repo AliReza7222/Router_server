@@ -45,22 +45,22 @@ class Vertex:
     def __gt__(self, other):
         if not isinstance(other,Vertex):
             raise TypeError(str(other) + 'is not and instance of '+ self.__class__.__name__)
-        return other.__value < self.__value
+        return self.__value < other.__value
 
     def __lt__(self, other):
         if not isinstance(other,Vertex):
             raise TypeError(str(other) + 'is not and instance of '+ self.__class__.__name__)
-        return self.__value > other.__value
+        return other.__value > self.__value
 
     def __ge__(self, other):
         if not isinstance(other,Vertex):
             raise TypeError(str(other) + 'is not and instance of ' + self.__class__.__name__)
-        return other.__value <= self.__value
+        return self.__value <= other.__value
 
     def __le__(self, other):
         if not isinstance(other,Vertex):
             raise TypeError(str(other) + 'is not and instance of ' + self.__class__.__name__)
-        return self.__value >= other.__value
+        return other.__value >= self.__value
 
     def __str__(self):
         return str(self.__identity)
