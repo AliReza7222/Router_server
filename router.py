@@ -38,6 +38,7 @@ class Router:
         copy_v,copy_e=deepcopy(self.__vertices),deepcopy(self.__edges)
         heap=MinHeap(copy_v)
         heap.modify(start_id,0)
+        v_n=dict()
         while end_id in heap:
             v=heap.pop()
             for neighbor in v.get_adjacent_vertice():
@@ -46,5 +47,15 @@ class Router:
                 if size_v_n < neighbor.get_value():
                     heap.modify(neighbor.get_id(),size_v_n)
                     neighbor.set_prev(v)
-r=Router('maps.txt')
-print(r.find_shortest_path(60,72))
+            v_n[f'{v}']= v , v.get_adjacent_vertice()
+        best_direction , end_v = list() , v_n[str(end_id)][0]
+        while True:
+            prev=end_v.get_prev()
+            if prev is not None:
+                end_v=prev
+                best_direction.append(prev)
+            else:
+                break
+        return best_direction
+#r=Router('maps.txt')
+#print(r.find_shortest_path(60,63))
