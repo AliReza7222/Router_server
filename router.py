@@ -57,5 +57,3 @@ class Router:
             else:
                 break
         return best_direction
-#r=Router('maps.txt')
-#print(r.find_shortest_path(60,63))

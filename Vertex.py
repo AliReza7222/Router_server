@@ -1,5 +1,6 @@
 ###b_kh
 ###ali_coder
+
 class Vertex:
     def __init__(self, identity , x , y , value=float('inf')):
         self.__identity=identity

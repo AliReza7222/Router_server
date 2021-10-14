@@ -1,8 +1,6 @@
 ###b_kh
 ###ali_coder
 
-# head and tail is made class Vertex
-
 class Edge:
     def __init__(self,head,tail):
         self.__head=head
