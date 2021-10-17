@@ -49,6 +49,9 @@ class Router:
                     neighbor.set_prev(v)
             v_n[f'{v}']= v , v.get_adjacent_vertice()
         best_direction , end_v = list() , v_n[str(end_id)][0]
+        for vertex in self.__vertices:
+            if vertex.get_id() is end_id:
+                best_direction.append(vertex)
         while True:
             prev=end_v.get_prev()
             if prev is not None:
