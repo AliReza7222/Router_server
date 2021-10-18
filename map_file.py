@@ -18,7 +18,7 @@ class run_map_file:
                 if len(line) != 0:
                     address_m[int(line[0])] = int(line[1]),int(line[2])
 
-        picture = ig.imread("2021-10-03_082304.jpg")
+        picture = ig.imread("my_map - Copy - Copy.jpg")
         x,y=[address_m[60][0],address_m[61][0]],[address_m[60][1],address_m[61][1]]
         x2,y2=[address_m[61][0],address_m[64][0]],[address_m[61][1],address_m[64][1]]
 
