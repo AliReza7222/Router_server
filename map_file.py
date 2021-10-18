@@ -29,7 +29,7 @@ class run_map_file:
         # plt.annotate(60,(x[0],y[0]),fontsize=18,color="blue")
         for id in address_m:
             x,y= address_m[id][0],address_m[id][1]
-            plt.scatter(x,y,color="blue",s=50)
+            plt.scatter(x,y,color="black",s=25)
         if len(self.best_direction) == 1:
             x,y=address_m[self.best_direction[0]][0],address_m[self.best_direction[0]][1]
             plt.scatter(x,y,color="red")
