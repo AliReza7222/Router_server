@@ -1,17 +1,19 @@
 ###b_kh
 ###ali_coder
 
-import socket,threading,pickle
+import socket,threading
 from router import Router
 
 def Tread(client):
         router=Router('maps.txt')
         start,end=tuple(client.recv(1024))
-        best_direction=pickle.dumps(router.find_shortest_path( start,end ))
+        best_direction = router.find_shortest_path( start,end )
+
         with open("maps.txt",'r') as file_map:
             map = file_map.read()
             client.send(map.encode())
-        client.send( best_direction )
+
+        client.send(bytes(best_direction))
         client.close()
 
 id,port="127.0.0.1",72

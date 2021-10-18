@@ -51,12 +51,12 @@ class Router:
         best_direction , end_v = list() , v_n[str(end_id)][0]
         for vertex in self.__vertices:
             if vertex.get_id() is end_id:
-                best_direction.append(vertex)
+                best_direction.append(vertex.get_id())
         while True:
             prev=end_v.get_prev()
             if prev is not None:
                 end_v=prev
-                best_direction.append(prev)
+                best_direction.append(prev.get_id())
             else:
                 break
         return best_direction
