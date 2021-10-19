@@ -21,7 +21,8 @@ soc=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 soc.bind((id,port))
 soc.listen(10)
 
-for _ in range(10):
+for _ in range(1,11):
     client,address=soc.accept()
     threading.Thread(target=Tread,args=(client,)).start()
+    print(f"Hi client {_}")
 soc.close()
