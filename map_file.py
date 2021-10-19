@@ -24,17 +24,19 @@ class run_map_file:
             x=[address_m[ self.best_direction [ number ] ][0],address_m[ self.best_direction [ number+1 ]][0] ]
             y=[address_m[ self.best_direction [ number ] ][1],address_m[ self.best_direction [ number+1 ]][1] ]
             plt.plot(x,y,marker="o",color="red")
-        # plt.plot(x,y,marker="o",color="red")
-        # plt.plot(x2,y2,marker="o",color="red")
-        # plt.annotate(60,(x[0],y[0]),fontsize=18,color="blue")
+
         for id in address_m:
             x,y= address_m[id][0],address_m[id][1]
-            plt.scatter(x,y,color="black",s=25)
+            plt.scatter(x,y,color="blue",s=25)
+            if id == 140 :
+                plt.annotate("Home",(x,y),fontsize=9,color="black")
+            else:
+                plt.annotate(id,(x,y),fontsize=10,color="black")
         if len(self.best_direction) == 1:
             x,y=address_m[self.best_direction[0]][0],address_m[self.best_direction[0]][1]
             plt.scatter(x,y,color="red")
         plt.imshow(picture)
-        plt.title('**best route**')
+        plt.title('map')
         plt.xlabel("X")
         plt.ylabel("Y")
         #plt.grid()
