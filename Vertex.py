@@ -10,7 +10,7 @@ class Vertex:
         self.__value=value
         self.__prev=None
 
-
+#description get and set for all enteries def init
     def get_id(self):
         return self.__identity
     def set_id(self,id):
@@ -41,7 +41,7 @@ class Vertex:
     def set_prev(self,prev):
         self.__prev=prev
 
-
+#checked Vertice for is big or small
     def __eq__(self, other):
             return other.__identity == self.__identity
 
