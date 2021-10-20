@@ -14,7 +14,7 @@ def Tread(client):
             map = file_map.read()
             client.send(map.encode())
 
-        client.send(bytes(best_direction))
+        client.send(f'{best_direction}'.encode())
         client.close()
 
 #found socket for server with id and port appoint
