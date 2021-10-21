@@ -5,11 +5,11 @@ import socket,threading
 from router import Router
 
 #found thread for process
-def Tread(client):
+def Tread(client,name):
         router=Router('maps.txt')
         start,end=tuple(client.recv(1024))
         best_direction = router.find_shortest_path( start,end )
-
+        client.send(name.encode())
         client.send("maps.txt".encode())
         client.send(f'{best_direction}'.encode())
         client.close()
@@ -21,8 +21,9 @@ soc.bind((id,port))
 soc.listen(10)
 
 #listen to ten client for give answer
-for _ in range(1,11):
+for number in range(1,11):
     client,address=soc.accept()
-    threading.Thread(target=Tread,args=(client,)).start()
-    print(f"Hi client {_}")
+    name=f'client {number}'
+    threading.Thread(target=Tread,args=(client,name)).start()
+    print(f"Hi client {number}")
 soc.close()

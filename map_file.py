@@ -19,8 +19,9 @@ class run_map_file:
                 line = address_map.readline().split()
                 if len(line) != 0:
                     address_m[int(line[0])] = int(line[1]),int(line[2])
-        # input x if x is "y" draw all routes
+        # input for show all route or show only best route and write id vertex
         x = input("Do you want show all routes ? (y/n) : ")
+        # input x if x is "y" draw all routes
         if x == "y" :
             with open(self.map_file, 'r') as map_ege:
                 n_v, n_e = [int(i) for i in map_ege.readline().split()]
@@ -37,8 +38,8 @@ class run_map_file:
                         plt.annotate("Home", (x, y), fontsize=9, color="black")
                     else:
                         plt.annotate(id, (x, y), fontsize=7, color="black")
-            print("ok\nplease waiting for show map.....")
-        # draw dot for all vertexes in map and write id vertex
+            print("ok\nplease waiting for show map.....\n")
+        # if x is "n" draw dot for all vertexes in map and write id vertex
         elif x=="n":
             for id in address_m:
                 x, y = address_m[id][0], address_m[id][1]
@@ -56,8 +57,8 @@ class run_map_file:
         for number in range(len(self.best_direction)-1):
             x=[address_m[ self.best_direction [ number ] ][0],address_m[ self.best_direction [ number+1 ]][0] ]
             y=[address_m[ self.best_direction [ number ] ][1],address_m[ self.best_direction [ number+1 ]][1] ]
-            plt.plot(x,y,marker="o",color="#04b04d")
-
+            plt.plot(x,y,marker="o",color="#006111")
+        # if start_id equal end_id
         if len(self.best_direction) == 1:
             x,y=address_m[self.best_direction[0]][0],address_m[self.best_direction[0]][1]
             plt.scatter(x,y,color="#04b04d")
@@ -68,5 +69,3 @@ class run_map_file:
         plt.xlabel("X")
         plt.ylabel("Y")
         plt.show()
-        print("Good luck.")
-
