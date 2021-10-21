@@ -21,12 +21,15 @@ def Run_client():
     print('name is : ',name_client) ## ---> handle error range 10 > for conect to server
     run_best_router = run_map_file(best_direction,file_map)
 for number in range(1,11):
-    Run_client()
-    enter = input("Do you want continue ? (y/n): ")
-    if enter == "y" :
-        continue
-    elif enter == "n" :
-        print("you came out of program.\nGood luck.")
-        break
-    else:
-        raise Exception("Error entryway")
+    try:
+        Run_client()
+        enter = input("Do you want continue ? (y/n): ")
+        if enter == "y" :
+            continue
+        elif enter == "n" :
+            print("you came out of program.\nGood luck.")
+            break
+        else:
+            raise Exception("Error entryway")
+    except:
+        print("the server is come out.")
