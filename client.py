@@ -12,7 +12,7 @@ soc.connect( (id,port) )
 soc.send(bytes ( [start_id,end_id] ) )
 
 #recive file_map and best_direction of server
-file_map = (soc.recv(72000)).decode()
+file_map = (soc.recv(1024)).decode()
 best_direction=json.loads(( soc.recv(1024) ).decode())
 
 #enteries to class run_map_file for run project

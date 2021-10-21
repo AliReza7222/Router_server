@@ -10,10 +10,7 @@ def Tread(client):
         start,end=tuple(client.recv(1024))
         best_direction = router.find_shortest_path( start,end )
 
-        with open("maps.txt",'r') as file_map:
-            map = file_map.read()
-            client.send(map.encode())
-
+        client.send("maps.txt".encode())
         client.send(f'{best_direction}'.encode())
         client.close()
 

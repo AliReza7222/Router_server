@@ -19,6 +19,19 @@ class run_map_file:
                 line = address_map.readline().split()
                 if len(line) != 0:
                     address_m[int(line[0])] = int(line[1]),int(line[2])
+        # input x if x is "y" draw all routes
+        x = input("you want all routes ? (y/n) : ")
+        print("ok")
+        if x == "y" :
+            with open(self.map_file, 'r') as map_ege:
+                n_v, n_e = [int(i) for i in map_ege.readline().split()]
+                for line in range(n_v + n_e + 1):
+                    edge = map_ege.readline().split()
+                    if len(edge) == 2:
+                        id1, id2 = int(edge[0]), int(edge[1])
+                        x = [address_m[id1][0], address_m[id2][0]]
+                        y = [address_m[id1][1], address_m[id2][1]]
+                        plt.plot(x, y, marker="o", color='#00a4e7', alpha=0.5)
         # show image map in matplotlib
         picture = ig.imread("my_map.jpg")
         # find x , y  of list best_direction for draw line best route
@@ -37,7 +50,7 @@ class run_map_file:
 
         if len(self.best_direction) == 1:
             x,y=address_m[self.best_direction[0]][0],address_m[self.best_direction[0]][1]
-            plt.scatter(x,y,color="red")
+            plt.scatter(x,y,color="#04b04d")
 
         # show map
         plt.imshow(picture)
