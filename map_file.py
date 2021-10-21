@@ -21,7 +21,7 @@ class run_map_file:
                     address_m[int(line[0])] = int(line[1]),int(line[2])
         # input x if x is "y" draw all routes
         x = input("you want all routes ? (y/n) : ")
-        print("ok")
+        print("ok\nplease waiting for show map.....")
         if x == "y" :
             with open(self.map_file, 'r') as map_ege:
                 n_v, n_e = [int(i) for i in map_ege.readline().split()]
@@ -58,4 +58,5 @@ class run_map_file:
         plt.xlabel("X")
         plt.ylabel("Y")
         plt.show()
+        print("Good luck.")
 
