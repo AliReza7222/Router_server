@@ -54,7 +54,7 @@ class run_map_file:
 
         # show map
         plt.imshow(picture)
-        plt.title('Map')
+        plt.title(' ( in map best route is shown with color green ) ')
         plt.xlabel("X")
         plt.ylabel("Y")
         plt.show()
