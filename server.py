@@ -22,7 +22,7 @@ soc.listen(10)
 print("started server\nwaiting for connect clients......")
 
 #listen to ten client for give answer
-for number in range(1,3):
+for number in range(1,11):
     client,address=soc.accept()
     name = f'client {number}'
     threading.Thread(target=Tread,args=(client,name)).start()
