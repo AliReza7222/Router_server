@@ -19,11 +19,12 @@ soc=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 id,port="127.0.0.1",72
 soc.bind((id,port))
 soc.listen(10)
+print("started server\nwaiting for connect clients......")
 
 #listen to ten client for give answer
 for number in range(1,3):
     client,address=soc.accept()
     name = f'client {number}'
     threading.Thread(target=Tread,args=(client,name)).start()
-    print(f"connected {name} to server ")
+    print(f"connection {name} to server .")
 soc.close()
