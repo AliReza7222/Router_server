@@ -18,18 +18,18 @@ def Run_client():
     best_direction=json.loads(( soc.recv(1024) ).decode())
 
     #enteries to class run_map_file for run project
-    print('name is : ',name_client) ## ---> handle error range 10 > for conect to server
     run_best_router = run_map_file(best_direction,file_map)
-for number in range(1,11):
-    try:
-        Run_client()
-        enter = input("Do you want continue ? (y/n): ")
-        if enter == "y" :
-            continue
-        elif enter == "n" :
-            print("you came out of program.\nGood luck.")
-            break
-        else:
-            raise Exception("Error entryway")
-    except:
-        print("the server is come out.")
+    return name_client
+for number in range(1,3):
+    name = Run_client()
+    if name == 'client 2' :
+        print("The connection to the server was lost.")
+        break
+    enter = input("Do you want continue ? (y/n): ")
+    if enter == "y" :
+        continue
+    elif enter == "n" :
+        print("you came out of program.\nGood luck.")
+        break
+    else:
+        raise Exception("Error entryway")

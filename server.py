@@ -21,9 +21,9 @@ soc.bind((id,port))
 soc.listen(10)
 
 #listen to ten client for give answer
-for number in range(1,11):
+for number in range(1,3):
     client,address=soc.accept()
-    name=f'client {number}'
+    name = f'client {number}'
     threading.Thread(target=Tread,args=(client,name)).start()
-    print(f"Hi client {number}")
+    print(f"connected {name} to server ")
 soc.close()
