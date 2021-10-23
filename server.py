@@ -26,5 +26,6 @@ for number in range(1,3):
     client,address=soc.accept()
     name = f'client {number}'
     threading.Thread(target=Tread,args=(client,name)).start()
-    print(f"connection {name} to server .")
+    print(f"\nconnection {name} to server .")
+print("\nThe server was disabled")
 soc.close()

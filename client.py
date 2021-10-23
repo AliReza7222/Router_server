@@ -23,7 +23,7 @@ def Run_client():
 for number in range(1,3):
     name = Run_client()
     if name == 'client 2' :
-        print("The connection to the server was lost.")
+        print("\nThe connection to the server was lost.")
         break
     enter = input("Do you want continue ? (y/n): ")
     if enter == "y" :
