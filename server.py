@@ -1,13 +1,13 @@
 ###b_kh
 ###ali_coder
 
-import socket,threading
+import socket,threading,json
 from router import Router
 
 #found thread for process
 def Tread(client,name):
         router=Router('maps.txt')
-        start,end=tuple(client.recv(1024))
+        start,end=tuple(json.loads(client.recv(1024)))
         best_direction = router.find_shortest_path( start,end )
         client.send(name.encode())
         client.send("maps.txt".encode())

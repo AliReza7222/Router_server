@@ -10,7 +10,7 @@ def Run_client():
     soc = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     id ,port = '127.0.0.1' ,72
     soc.connect( (id,port) )
-    soc.send(bytes ( [start_id,end_id] ) )
+    soc.send( f'{[start_id,end_id]}'.encode() )
 
     #recive file_map and best_direction of server
     name_client = (soc.recv(100)).decode()
