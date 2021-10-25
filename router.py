@@ -12,13 +12,13 @@ class Router:
         self.__edges={}
         self.__vertices=[]
         self.add_vertex_edge()
-    #function add_v_e , add vertexes and edges to list self.vertices and dict self.edge
+    # function add_vertex_edge , add vertexes and edges to list self.vertices and dict self.edge
     def add_vertex_edge(self):
         with open(self.map_file_address,'r') as map_file:
             n_vertex,n_edge=[int(i) for i in map_file.readline().split()]
 
             vertices = {}
-            #add vertices
+            # add vertices
             for _ in range(n_vertex):
                 line=map_file.readline().split()
                 ide,x,y=int(line[0]),float(line[1]),float(line[2])
