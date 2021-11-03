@@ -55,8 +55,8 @@ class run_map_file:
                     x, y = address_m[id][0], address_m[id][1]
                     plt.annotate(id, (x, y), fontsize=7, color="black")
 
+        # if no equal 'n' only draw dot for any id and write name id
         if no == 'n':
-            # write id for any place with draw dot for any id
             for id in address_m:
                 x, y = address_m[id][0], address_m[id][1]
                 plt.annotate(id, (x, y), fontsize=7, color="black")
