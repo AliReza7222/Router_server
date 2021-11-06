@@ -29,10 +29,10 @@ soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 id, port = "127.0.0.1", 72
 soc.bind((id, port))
 soc.listen(10)
+# print and sound for active server
 print("started server\nwaiting for connect clients......")
-
-
 load_sound("sound/active.wav")
+
 # listen to ten client for give answer
 for number in range(1, 11):
     client, address = soc.accept()
