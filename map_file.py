@@ -1,5 +1,3 @@
-# b_kh
-# ali_coder
 import matplotlib.pyplot as plt
 import matplotlib.image as ig
 
