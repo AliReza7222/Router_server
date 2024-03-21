@@ -1,5 +1,3 @@
-# b_kh
-# ali_coder
 import socket, json
 from map_file import run_map_file
 
