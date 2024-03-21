@@ -1,6 +1,3 @@
-# b_kh
-# ali_coder
-
 class MinHeap:
 
     def __init__(self, array=[], index_table={}):
