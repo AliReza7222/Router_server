@@ -1,5 +1,3 @@
-# b_kh
-# ali_coder
 from Vertex import Vertex
 from edge import Edge
 from heap import MinHeap
