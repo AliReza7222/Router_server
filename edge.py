@@ -1,6 +1,3 @@
-# b_kh
-# ali_coder
-
 class Edge:
     def __init__(self, head, tail):
         self.__head = head
